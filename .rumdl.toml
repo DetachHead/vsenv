@@ -1,0 +1,25 @@
+[global]
+enable = ["ALL"]
+disable = [
+  # rules we disable because i don't like them or they aren't relevant to this project:
+  "descriptive-link-text", # usually fine because the surrounding text has context
+
+  # rules we disable because they're covered by oxfmt:
+  "line-length",
+]
+
+[MD033]
+allowed-elements = ["no-markdown-equivalent"]
+table-allowed-elements = ["no-markdown-equivalent"]
+
+[MD040]
+unknown-language-action = 'warn'
+
+[MD057]
+compact-paths = true
+
+[MD082]
+allow-parent-headings = true
+
+[MD093]
+code = false

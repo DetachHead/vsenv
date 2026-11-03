@@ -1,0 +1,60 @@
+{
+  "git.blame.editorDecoration.enabled": true,
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+  "js/ts.inlayHints.parameterNames.enabled": "literals",
+  "editor.formatOnSave": true,
+  "[javascript][typescript][json][jsonc][yaml][toml][markdown]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+  "git.allowForcePush": true,
+  "git.autofetch": "all",
+  "git.autoStash": true,
+  "git.pruneOnFetch": true,
+  "git.rebaseWhenSync": true,
+  "git.suggestSmartCommit": false,
+  "git.supportCancellation": true,
+  "git.useCommitInputAsStashMessage": true,
+  "git.pullBeforeCheckout": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "files.eol": "\n",
+  "git.useEditorAsCommitInput": false,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.unicodeHighlight.nonBasicASCII": true,
+  "chat.disableAIFeatures": true,
+  "telemetry.feedback.enabled": false,
+  "files.readonlyInclude": {
+    "node_modules/**/*": true,
+    "web-client/browser/src/external-commands.jsonc": true,
+    "pnpm-lock.yaml.json": true,
+    "pnpm.cmd": true
+  },
+  "json.schemaDownload.trustedDomains": {
+    "https://raw.githubusercontent.com": true
+  },
+  "terminal.integrated.env.windows": {
+    // on windows we can do this to add pnpm.cmd to the PATH
+    // TODO: solution for linux/macos
+    "PATH": "${workspaceFolder};${workspaceFolder}/node_modules/.bin;${env:PATH}",
+    // we deliberately only set this for windows because the npm scripts that call ./pnpm.cmd will otherwise fail.
+    // but on linux, enabling the shell emulator causes scripts that call ./pnpm.cmd to fail...
+    "pnpm_config_shell_emulator": "true"
+  },
+  "terminal.integrated.env.osx": {
+    "PATH": "${workspaceFolder}/node_modules/.bin:${env:PATH}"
+  },
+  "terminal.integrated.env.linux": {
+    "PATH": "${workspaceFolder}/node_modules/.bin:${env:PATH}"
+  },
+  "npm.packageManager": "pnpm",
+  "npm.scriptRunner": "pnpm",
+    "search.exclude": {
+        "out": true, // set this to false to include "out" folder in search results
+        "dist": true // set this to false to include "dist" folder in search results
+    },
+    // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
+    "js/ts.tsc.autoDetect": "off",
+    "js/ts.tsdk.path": "node_modules/typescript/lib"
+}

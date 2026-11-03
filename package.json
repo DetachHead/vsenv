@@ -1,0 +1,73 @@
+{
+  "name": "vsenv",
+  "displayName": "VSenv",
+  "version": "0.0.1",
+  "description": "Extension that allows you to set environment variables that are visible to other extensions",
+  "categories": [
+    "Other"
+  ],
+  "publisher": "detachhead",
+  "main": "./dist/extension.js",
+  "scripts": {
+    "compile": "./pnpm.cmd run check-types && ./pnpm.cmd run lint && node esbuild.mts",
+    "package": "node esbuild.mts --production && vsce package --no-dependencies",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "./pnpm.cmd run compile-tests && ./pnpm.cmd run compile && ./pnpm.cmd run lint",
+    "check-types": "tsc",
+    "lint": "oxlint .",
+    "test": "vscode-test"
+  },
+  "dependencies": {
+    "@vscode/python-environments": ">=1.4.0",
+    "@vscode/python-extension": ">=1.0.6"
+  },
+  "devDependencies": {
+    "@eslint-community/eslint-plugin-eslint-comments": ">=4.8.1",
+    "@stylistic/eslint-plugin": ">=5.10.0",
+    "@types/mocha": ">=10.0.10",
+    "@types/node": "26.x",
+    "@types/vscode": ">=1.143.0",
+    "@vscode/test-cli": ">=0.0.15",
+    "@vscode/test-electron": ">=3.0.0",
+    "@vscode/vsce": "^4.1.0",
+    "esbuild": ">=0.28.1",
+    "eslint": "^10.14.0",
+    "eslint-plugin-prefer-arrow-functions": ">=3.10.2",
+    "oxfmt": ">=0.75.0",
+    "oxlint": ">=1.90.0",
+    "oxlint-tsgolint": ">=7.0.2005",
+    "typescript": "^6"
+  },
+  "overrides": {
+    "diff": "^8.0.4",
+    "serialize-javascript": "^7.0.6"
+  },
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "vsenv",
+      "properties": {
+        "vsenv.paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "26.3.1",
+      "onFail": "download"
+    }
+  },
+  "engines": {
+    "vscode": ">=1.143.0"
+  }
+}
