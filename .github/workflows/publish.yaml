@@ -18,7 +18,7 @@ jobs:
 
       # https://marketplace.visualstudio.com/manage/publishers/detachhead/trustedpublishing
       - name: publish VSIX - visual studio marketplace
-        run: vsce publish --pre-release
+        run: vsce publish --allow-star-activation --no-dependencies --pre-release
 
       # TODO
       # - name: publish VSIX - open VSX
