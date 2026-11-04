@@ -9,11 +9,14 @@
   "publisher": "detachhead",
   "main": "./dist/extension.js",
   "scripts": {
-    "compile": "./pnpm.cmd run check-types && ./pnpm.cmd run lint && node esbuild.mts",
-    "package": "node esbuild.mts --production && vsce package --no-dependencies",
+    "vscode:prepublish": "./pnpm.cmd run compile",
+    "check": "./pnpm.cmd run check-types && ./pnpm.cmd run lint && ./pnpm.cmd run format:check",
+    "compile": "./pnpm.cmd run check-types && node esbuild.mts",
+    "package": "vsce package --no-dependencies",
     "check-types": "tsc",
     "lint": "oxlint .",
-    "test": "vscode-test"
+    "format:check": "oxfmt --check",
+    "format:fix": "oxfmt"
   },
   "dependencies": {
     "@vscode/python-environments": ">=1.4.0",
@@ -28,6 +31,7 @@
     "esbuild": ">=0.28.1",
     "eslint": "^10.14.0",
     "eslint-plugin-prefer-arrow-functions": ">=3.10.2",
+    "ovsx": ">=1.3.0",
     "oxfmt": ">=0.75.0",
     "oxlint": ">=1.90.0",
     "oxlint-tsgolint": ">=7.0.2005",

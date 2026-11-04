@@ -1,0 +1,12 @@
+on: pull_request
+
+env:
+  GG_GITHUB_TOKEN: ${{ github.token }}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - run: ./pnpm.cmd run check
+      - run: ./pnpm.cmd run package
