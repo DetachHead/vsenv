@@ -6,13 +6,14 @@
   "categories": [
     "Other"
   ],
+  "repository": "https://github.com/detachhead/vsenv",
   "publisher": "detachhead",
   "main": "./dist/extension.js",
   "scripts": {
     "vscode:prepublish": "./pnpm.cmd run compile",
     "check": "./pnpm.cmd run check-types && ./pnpm.cmd run lint && ./pnpm.cmd run format:check",
     "compile": "./pnpm.cmd run check-types && node esbuild.mts",
-    "package": "vsce package --no-dependencies",
+    "package": "vsce package --no-dependencies --allow-star-activation",
     "check-types": "tsc",
     "lint": "oxlint .",
     "format:check": "oxfmt --check",
