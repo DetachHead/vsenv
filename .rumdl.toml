@@ -3,11 +3,10 @@ enable = ["ALL"]
 disable = [
   # rules we disable because i don't like them or they aren't relevant to this project:
   "descriptive-link-text", # usually fine because the surrounding text has context
-
+  "heading-capitalization",
   # rules we disable because they're covered by oxfmt:
   "line-length",
 ]
-
 [MD033]
 allowed-elements = ["no-markdown-equivalent"]
 table-allowed-elements = ["no-markdown-equivalent"]
