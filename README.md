@@ -10,7 +10,7 @@ extensions.
 ## Installation
 
 - [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=detachhead.vsenv)
-- OpenVSX (coming soon)
+- [OpenVSX](https://open-vsx.org/extension/detachhead/vsenv)
 
 ## What is this?
 

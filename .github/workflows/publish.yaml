@@ -23,9 +23,9 @@ jobs:
       - name: publish VSIX - visual studio marketplace
         run: vsce publish --oidc --allow-star-activation --no-dependencies --pre-release
 
-      # TODO
-      # - name: publish VSIX - open VSX
-      #   run: ovsx publish --pat ${{ secrets.OPEN_VSX_TOKEN }} --pre-release
+      - name: publish VSIX - open VSX
+        # https://github.com/eclipse-openvsx/openvsx/issues/2423
+        run: yes | ovsx publish --no-dependencies --pre-release
 
       - uses: marvinpinto/action-automatic-releases@919008cf3f741b179569b7a6fb4d8860689ab7f0
         with:
