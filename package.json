@@ -1,7 +1,7 @@
 {
   "name": "vsenv",
   "displayName": "VSenv",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Extension that allows you to set environment variables that are visible to other extensions",
   "categories": [
     "Other"
