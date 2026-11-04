@@ -6,6 +6,9 @@ on:
 env:
   GG_GITHUB_TOKEN: ${{ github.token }}
 
+permissions:
+  id-token: write # for vsce trusted publishing
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -18,7 +21,7 @@ jobs:
 
       # https://marketplace.visualstudio.com/manage/publishers/detachhead/trustedpublishing
       - name: publish VSIX - visual studio marketplace
-        run: vsce publish --allow-star-activation --no-dependencies --pre-release
+        run: vsce publish --oidc --allow-star-activation --no-dependencies --pre-release
 
       # TODO
       # - name: publish VSIX - open VSX
