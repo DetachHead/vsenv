@@ -1,0 +1,34 @@
+on:
+  push:
+    tags:
+      - "v*"
+
+env:
+  GG_GITHUB_TOKEN: ${{ github.token }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - run: ./pnpm.cmd install
+
+      - name: add npm scripts to PATH
+        run: echo ./node_modules/.bin >> $GITHUB_PATH
+
+      # https://marketplace.visualstudio.com/manage/publishers/detachhead/trustedpublishing
+      - name: publish VSIX - visual studio marketplace
+        run: vsce publish
+
+      # TODO
+      # - name: publish VSIX - open VSX
+      #   run: ovsx publish --pat ${{ secrets.OPEN_VSX_TOKEN }}
+
+      - uses: marvinpinto/action-automatic-releases@919008cf3f741b179569b7a6fb4d8860689ab7f0
+        with:
+          title:
+          draft: true # so i can write the release notes manually before publishing it
+          repo_token: ${{ github.token }}
+          prerelease: false
+          files: |
+            *.vsix

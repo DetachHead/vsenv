@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "oxc.oxc-vscode",
+    "github.vscode-github-actions",
     "rvben.rumdl",
     "redhat.vscode-yaml",
     "ms-vscode.extension-test-runner"
