@@ -25,7 +25,7 @@ jobs:
 
       - name: publish VSIX - open VSX
         # https://github.com/eclipse-openvsx/openvsx/issues/2423
-        run: yes | ovsx publish --no-dependencies --pre-release
+        run: yes | ovsx publish --trusted-publishing --no-dependencies --pre-release
 
       - uses: marvinpinto/action-automatic-releases@919008cf3f741b179569b7a6fb4d8860689ab7f0
         with:
