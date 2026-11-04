@@ -7,7 +7,14 @@ extensions.
 > This extension is currently experimental and is subject to breaking changes. In fact it may break
 > entirely because it relies on a VSCode bug. [See below](#disclaimer) for more info.
 
-## The problem
+## Installation
+
+- [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=detachhead.vsenv)
+- OpenVSX (coming soon)
+
+## What is this?
+
+### The problem
 
 Most VSCode extensions for language servers and other command-line tools either expect that tool to
 be installed globally, or come bundled with their own version.
@@ -23,10 +30,14 @@ This means many extensions need to be configured using
 [disgusting polyglot scripts](https://github.com/dprint/dprint/issues/859#issuecomment-6011183803)
 if you want to be able to commit a `.vscode/settings.json` file that works for all contributors.
 
-## The solution
+### The solution
 
 This extension loads (hopefully) before your other extensions do. It then modifies the `PATH`
-variable visible to those extensions with any directories specified in its config:
+variable visible to those extensions with any directories specified in its config.
+
+## Usage
+
+Configure additional directories to add to the `PATH` variable in `.vscode/settings.json`:
 
 ```jsonc
 {
@@ -37,12 +48,24 @@ variable visible to those extensions with any directories specified in its confi
 }
 ```
 
+> [!TIP]
+> If your project requires VSenv, you should add it as a recommended extension so that other
+> contributors are prompted to install it:
+>
+> ```jsonc
+> // .vscode/extensions.json
+>
+> {
+>   "recommendations": ["detachhead.vsenv"],
+> }
+> ```
+
 ### Python environment detection
 
 As mentioned [above](#the-problem), Python environments have a different scripts path on Windows and
 Unix-like operating systems.
 
-VSEnv solves this by automatically detecting your Python environment using either the
+VSenv solves this by automatically detecting your Python environment using either the
 [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) or
 [Python Environments](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-python-envs).
 If an environment is detected, it's automatically added to the `PATH` along with any additional
