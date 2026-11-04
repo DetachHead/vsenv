@@ -1,7 +1,4 @@
-on:
-  push:
-    tags:
-      - "v*"
+on: pull_request
 
 env:
   GG_GITHUB_TOKEN: ${{ github.token }}
@@ -20,18 +17,18 @@ jobs:
         run: echo ./node_modules/.bin >> $GITHUB_PATH
 
       # https://marketplace.visualstudio.com/manage/publishers/detachhead/trustedpublishing
-      - name: publish VSIX - visual studio marketplace
-        run: vsce publish --oidc --allow-star-activation --no-dependencies --pre-release
+      # - name: publish VSIX - visual studio marketplace
+      #   run: vsce publish --oidc --allow-star-activation --no-dependencies --pre-release
 
       - name: publish VSIX - open VSX
         # https://github.com/eclipse-openvsx/openvsx/issues/2423
         run: yes | ovsx publish --no-dependencies --pre-release
 
-      - uses: marvinpinto/action-automatic-releases@919008cf3f741b179569b7a6fb4d8860689ab7f0
-        with:
-          title:
-          draft: true # so i can write the release notes manually before publishing it
-          repo_token: ${{ github.token }}
-          prerelease: false
-          files: |
-            *.vsix
+      # - uses: marvinpinto/action-automatic-releases@919008cf3f741b179569b7a6fb4d8860689ab7f0
+      #   with:
+      #     title:
+      #     draft: true # so i can write the release notes manually before publishing it
+      #     repo_token: ${{ github.token }}
+      #     prerelease: false
+      #     files: |
+      #       *.vsix
