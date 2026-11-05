@@ -12,7 +12,12 @@ export const getPythonInterpreter = async (workspaceRoot: Uri) => {
       "failed to get python interpreter from the new environments extension, falling back to the old API:",
       error,
     );
+  }
+  try {
     const api = await PythonExtension.api();
     return api.environments.getActiveEnvironmentPath().path;
+  } catch (error) {
+    console.log("failed to get python interpreter from either extension:", error);
   }
+  return undefined;
 };
