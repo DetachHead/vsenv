@@ -8,6 +8,7 @@ env:
 
 permissions:
   id-token: write # for vsce trusted publishing
+  contents: write # to create github releases
 
 jobs:
   publish:
